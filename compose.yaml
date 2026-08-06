@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: kh-completion-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-kh_completion}
+      POSTGRES_USER: ${POSTGRES_USER:-kh_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kh_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - kh_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  kh_postgres_data:
